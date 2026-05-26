@@ -9,7 +9,7 @@ const TIPO_LABELS = {
   otro: '🏟️ Otro',
 }
 
-import { getCanchaImg } from '../utils/imagenes'
+// import { getCanchaImg } from '../utils/imagenes'  // HARDCODED (fallback)
 
 function Estrellas({ calificacion }) {
   if (!calificacion) return <span className="text-muted" style={{ fontSize: '0.8rem' }}>Sin reseñas</span>
@@ -33,11 +33,11 @@ function Estrellas({ calificacion }) {
 export default function CanchaCard({ cancha, onReservar, onVerDisponibilidad, onVerResenas, showReservar = true }) {
   return (
     <div className="cancha-card fade-in">
-      {getCanchaImg(cancha) && (
-        // HARDCODED — ANTES: cancha.imagen_url && (
+      {cancha.imagen_url && (
+        // HARDCODED (fallback): getCanchaImg(cancha) && (
         <img
-          src={getCanchaImg(cancha)}  // HARDCODED
-          // ANTES: src={cancha.imagen_url}
+          src={cancha.imagen_url}
+          // HARDCODED (fallback): src={getCanchaImg(cancha)}
           alt={cancha.nombre}
           style={{
             width: '100%',
