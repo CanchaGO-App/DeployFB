@@ -35,7 +35,7 @@ export default function CanchaCard({ cancha, onReservar, onVerDisponibilidad, on
     <div className="cancha-card fade-in">
       {/* HARDCODED: getCanchaImg(cancha) && ( */}
       {cancha.imagen_url && (
-        {/* HARDCODED: src={getCanchaImg(cancha)} */}
+        // HARDCODED: src={getCanchaImg(cancha)}
         <img
           src={cancha.imagen_url}
           alt={cancha.nombre}

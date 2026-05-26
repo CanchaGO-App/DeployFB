@@ -332,7 +332,7 @@ export default function LocalDetailPage() {
             <div style={{ position: 'relative', width: '350px', height: '250px', borderRadius: 'var(--radius-lg)', overflow: 'hidden', flexShrink: 0, boxShadow: 'var(--shadow-card)' }}>
               {/* HARDCODED: getLocalImg(local) ? ( */}
               {local.imagen_portada_url ? (
-                {/* HARDCODED: src={getLocalImg(local)} */}
+                // HARDCODED: src={getLocalImg(local)}
                 <img src={local.imagen_portada_url} alt={local.nombre} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               ) : (
                 <div style={{ width: '100%', height: '100%', background: 'var(--gradient-card)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '5rem', color: '#fff' }}>
@@ -387,7 +387,7 @@ export default function LocalDetailPage() {
                     }}>
                       {/* HARDCODED: getCanchaImg(cancha) ? ( */}
                       {cancha.imagen_url ? (
-                        {/* HARDCODED: src={getCanchaImg(cancha)} */}
+                        // HARDCODED: src={getCanchaImg(cancha)}
                         <img src={cancha.imagen_url} alt={cancha.nombre} style={{ width: '100%', height: '160px', objectFit: 'cover', borderRadius: 'var(--radius-md)', marginBottom: '16px' }} />
                       ) : (
                         <div style={{ width: '100%', height: '160px', background: 'rgba(255,255,255,0.05)', borderRadius: 'var(--radius-md)', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3rem', color: '#fff' }}>

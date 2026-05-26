@@ -614,7 +614,7 @@ export default function DuenoDashboard() {
                             <div className="ccp-image-container" onClick={() => navigate(`/local/${local.id}`)} style={{ cursor: 'pointer' }}>
                               {/* HARDCODED: getLocalImg(local) ? ( */}
                               {local.imagen_portada_url ? (
-                                {/* HARDCODED: src={getLocalImg(local)} */}
+                                // HARDCODED: src={getLocalImg(local)}
                                 <img src={local.imagen_portada_url} alt={local.nombre} className="ccp-image" />
                               ) : (
                                 <div className="ccp-image" style={{ background: 'var(--gradient-main)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '4rem' }}>🏟️</div>
@@ -811,7 +811,7 @@ export default function DuenoDashboard() {
                   }}>
                     {/* HARDCODED: getLocalImg(l) && ( */}
                     {l.imagen_portada_url && (
-                      {/* HARDCODED: src={getLocalImg(l)} */}
+                      // HARDCODED: src={getLocalImg(l)}
                       <img src={l.imagen_portada_url} alt={l.nombre}
                         style={{ width: 56, height: 56, objectFit: 'cover', borderRadius: 8, flexShrink: 0 }} />
                     )}
@@ -986,7 +986,7 @@ export default function DuenoDashboard() {
                       }}>
                         {/* HARDCODED: getCanchaImg(c) && ( */}
                         {c.imagen_url && (
-                          {/* HARDCODED: src={getCanchaImg(c)} */}
+                          // HARDCODED: src={getCanchaImg(c)}
                           <img src={c.imagen_url} alt={c.nombre}
                             style={{ width: 56, height: 56, objectFit: 'cover', borderRadius: 8, flexShrink: 0 }} />
                         )}
