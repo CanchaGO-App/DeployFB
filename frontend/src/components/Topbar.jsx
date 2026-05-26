@@ -17,9 +17,12 @@ export default function Topbar({ navigationLinks = [] }) {
   const [showProfileMenu, setShowProfileMenu] = useState(false)
   const [showChat, setShowChat] = useState(false)
   const [showMobileMenu, setShowMobileMenu] = useState(false)
-
   const notifRef = useRef(null)
   const profileRef = useRef(null)
+
+  function handleToggleMenu() {
+    setShowMobileMenu(prev => !prev)
+  }
 
   useEffect(() => {
     if (usuario?.id) {
@@ -36,7 +39,12 @@ export default function Topbar({ navigationLinks = [] }) {
     }
 
     document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
+    window.addEventListener('toggleMobileMenu', handleToggleMenu)
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      window.removeEventListener('toggleMobileMenu', handleToggleMenu)
+    }
   }, [usuario])
 
   useEffect(() => {

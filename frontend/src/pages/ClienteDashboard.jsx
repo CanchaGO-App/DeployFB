@@ -22,7 +22,8 @@ import {
   MdFlashOn,
   MdBusiness,
   MdSportsVolleyball,
-  MdSportsTennis
+  MdSportsTennis,
+  MdMenu
 } from 'react-icons/md'
 
 const CLIENT_NAVIGATION_LINKS = [
@@ -197,18 +198,36 @@ export default function ClienteDashboard() {
             gap: '24px',
             alignItems: 'center'
           }}>
-            <h2 style={{ 
-              fontSize: '1.5rem', 
-              fontWeight: 700, 
-              color: 'var(--text-pure)', 
-              margin: 0,
-              textAlign: 'center',
-              letterSpacing: '-0.02em'
-            }}>
-              ¿Qué deporte quieres jugar hoy? <MdOutlineEmojiEvents style={{ verticalAlign: 'middle', color: 'var(--accent-yellow)' }} />
-            </h2>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', position: 'relative' }}>
+              <button 
+                className="mobile-hamburger-inline" 
+                onClick={() => window.dispatchEvent(new Event('toggleMobileMenu'))}
+                style={{ 
+                  display: 'none', 
+                  background: 'transparent', 
+                  border: 'none', 
+                  color: '#fff', 
+                  cursor: 'pointer',
+                  position: 'absolute',
+                  left: 0
+                }}
+              >
+                <MdMenu style={{ fontSize: '2.4rem' }} />
+              </button>
+              <h2 style={{ 
+                fontSize: '1.4rem', 
+                fontWeight: 700, 
+                color: 'var(--text-pure)', 
+                margin: 0,
+                textAlign: 'center',
+                letterSpacing: '-0.02em',
+                maxWidth: '80%'
+              }}>
+                ¿Qué deporte quieres jugar hoy? <MdOutlineEmojiEvents style={{ verticalAlign: 'middle', color: 'var(--accent-yellow)' }} />
+              </h2>
+            </div>
 
-            <div style={{ 
+            <div className="mobile-pill-container" style={{ 
               display: 'flex', 
               gap: '16px', 
               flexWrap: 'wrap', 

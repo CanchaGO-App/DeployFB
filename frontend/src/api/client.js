@@ -3,25 +3,8 @@
  * Maneja headers de autenticación y errores centralizados.
  */
 
-const DEFAULT_API_URL = 'https://deployfb.onrender.com/api'
-
-function getApiUrl() {
-  if (import.meta.env.VITE_API_URL) {
-    return import.meta.env.VITE_API_URL
-  }
-
-  if (typeof window !== 'undefined') {
-    const { hostname } = window.location
-
-    if (hostname.includes('onrender.com') || hostname.includes('vercel.app')) {
-      return DEFAULT_API_URL
-    }
-  }
-
-  return '/api'
-}
-
-const API_URL = getApiUrl()
+const API_URL = import.meta.env.VITE_API_URL || 
+  (window.location.hostname.includes('onrender.com') ? 'https://backend-zjpm.onrender.com/api' : '/api')
 
 export function getToken() {
   return localStorage.getItem('access_token')

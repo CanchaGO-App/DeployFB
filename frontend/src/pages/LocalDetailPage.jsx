@@ -120,7 +120,7 @@ export default function LocalDetailPage() {
 
   async function handlePagar() {
     if (!comprobanteFile) {
-      setError('Debes subir el comprobante de pago')
+      setError('Es obligatorio llenar ese campo para poder realizar la reserva')
       return
     }
     setError('')
@@ -728,6 +728,15 @@ export default function LocalDetailPage() {
               onChange={(e) => setComprobanteFile(e.target.files[0])}
             />
           </div>
+          {error && (
+            <div style={{
+              background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)',
+              color: 'var(--accent-red)', padding: '12px 16px', borderRadius: 'var(--radius-md)',
+              fontSize: '0.9rem', marginTop: '8px', marginBottom: '16px', textAlign: 'center'
+            }}>
+              {error}
+            </div>
+          )}
           {pagoModal.canchaInfo && (
             <p style={{ textAlign: 'center', fontWeight: 600, color: 'var(--accent-green)' }}>
               Monto: Bs. {pagoModal.canchaInfo.precio_por_hora}
@@ -737,7 +746,7 @@ export default function LocalDetailPage() {
             <button
               className="btn-secondary"
               style={{ flex: 1 }}
-              onClick={() => { setPagoModal(null); setComprobanteFile(null); setQrZoom(false) }}
+              onClick={() => { setPagoModal(null); setComprobanteFile(null); setQrZoom(false); setError(''); }}
             >
               Cancelar
             </button>
@@ -776,7 +785,6 @@ export default function LocalDetailPage() {
           </div>
         </ModalWrapper>
       )}
-
       <CustomAlertModal
         isOpen={confirmOpen}
         title={confirmTitle}

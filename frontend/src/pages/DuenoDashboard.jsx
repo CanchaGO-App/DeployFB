@@ -64,10 +64,8 @@ const TIPOS_CANCHA = [
   { value: 'futbol5', label: 'Fútbol 5' },
   { value: 'futbol7', label: 'Fútbol 7' },
   { value: 'futbol11', label: 'Fútbol 11' },
-  { value: 'basquet', label: 'Básquetbol' },
-  { value: 'tenis', label: 'Tenis' },
+  { value: 'wally', label: 'Wally' },
   { value: 'padel', label: 'Pádel' },
-  { value: 'voley', label: 'Voleibol' },
 ]
 
 function LocationMarker({ formLocal, setFormLocal }) {
