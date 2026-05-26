@@ -52,11 +52,9 @@ import {
 const PIE_COLORS = ['var(--accent-green)', '#f97316']
 
 const DUENO_NAVIGATION_LINKS = [
-  { label: 'Resumen', path: '/dashboard/dueno?section=resumen' },
-  { label: 'Mis Locales', path: '/dashboard/dueno?section=locales' },
-  { label: 'Canchas', path: '/dashboard/dueno?section=canchas' },
-  { label: 'Reservas', path: '/dashboard/dueno?section=reservas' },
-  { label: 'Pagos', path: '/dashboard/dueno?section=pagos' },
+  { label: 'Panel de Gestión', path: '/dashboard/dueno' },
+  { label: 'Explorar Mapa', path: '/explorar' },
+  { label: 'Mi Perfil', path: '/perfil' },
 ]
 
 const DUENO_SECTIONS = new Set(['resumen', 'locales', 'canchas', 'reservas', 'pagos'])
