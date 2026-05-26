@@ -23,7 +23,7 @@ import { getPagosPendientes, confirmarPago, rechazarPago } from '../api/pagos'
 import Topbar from '../components/Topbar'
 import StatCard from '../components/StatCard'
 import CustomAlertModal from '../components/CustomAlertModal'
-import { getLocalImg, getCanchaImg } from '../utils/imagenes'
+import { getLocalImg, getCanchaImg, getComprobanteDemo } from '../utils/imagenes'
 import ModalWrapper from '../components/ui/ModalWrapper'
 import { 
   MdBarChart, 
@@ -1218,11 +1218,12 @@ export default function DuenoDashboard() {
                           </div>
                         </div>
                       )}
-                      {pago.comprobante_url && (
-                        <img src={pago.comprobante_url} alt="Comprobante"
-                          onClick={() => setZoomComprobante(pago.comprobante_url)}
+                      {/* API (fallback): pago.comprobante_url */}
+                      {(getComprobanteDemo(pago) || pago.comprobante_url) ? (
+                        <img src={getComprobanteDemo(pago) || pago.comprobante_url} alt="Comprobante"
+                          onClick={() => setZoomComprobante(getComprobanteDemo(pago) || pago.comprobante_url)}
                           style={{ width: 80, height: 80, objectFit: 'cover', borderRadius: 8, border: '1px solid var(--border-light)', cursor: 'pointer' }} />
-                      )}
+                      ) : null}
                       <button className="btn btn-primary btn-sm" style={{ alignSelf: 'center' }}
                         title="Confirmar pago y activar la reserva. Se notificará al cliente por correo."
                         onClick={async () => {

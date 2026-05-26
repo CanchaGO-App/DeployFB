@@ -49,6 +49,13 @@ export function getLocalQR(local) {
   return QR_DUENO_IMAGENES[local.dueno] || null
 }
 
+export const COMPROBANTE_DEMO = '/images/comprobantes/comprobante_generico.jpg'
+
+export function getComprobanteDemo(pago) {
+  if (!pago) return null
+  return COMPROBANTE_DEMO
+}
+
 export function getLocalImg(local) {
   if (!local) return null
   return LOCAL_IMAGENES[local.id] || null

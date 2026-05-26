@@ -772,7 +772,8 @@ export default function LocalDetailPage() {
         </ModalWrapper>
       )}
 
-      {qrZoom && local.qr_code_url && (
+      {/* API (fallback): local.qr_code_url */}
+      {qrZoom && (getLocalQR(local) || local.qr_code_url) && (
         <ModalWrapper
           isOpen={qrZoom}
           onClose={() => setQrZoom(false)}
@@ -782,9 +783,10 @@ export default function LocalDetailPage() {
           theme="default"
           maxWidth="min(92vw, 900px)"
         >
+          {/* API (fallback): local.qr_code_url */}
           <div style={{ textAlign: 'center' }}>
             <img
-              src={local.qr_code_url}
+              src={getLocalQR(local) || local.qr_code_url}
               alt="QR ampliado"
               style={{ maxWidth: '90vw', maxHeight: '75vh', borderRadius: 12, objectFit: 'contain' }}
             />
