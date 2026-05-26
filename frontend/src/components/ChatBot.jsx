@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { BsRobot } from 'react-icons/bs'
-import { MdClose, MdSend } from 'react-icons/md'
+import { MdClose, MdSend, MdRefresh } from 'react-icons/md'
 import { fetchAPI } from '../api/client'
 
 export default function ChatBot({ abierto, onClose }) {
@@ -11,6 +11,12 @@ export default function ChatBot({ abierto, onClose }) {
   const [cargando, setCargando] = useState(false)
   const endRef = useRef(null)
   const controllerRef = useRef(null)
+
+  // Reinicia la conversación: limpia todo el historial de mensajes
+  // para empezar una nueva sesión desde cero
+  function reiniciar() {
+    setMensajes([])
+  }
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -74,7 +80,15 @@ export default function ChatBot({ abierto, onClose }) {
     try {
       const data = await fetchAPI('/chatbot/', {
         method: 'POST',
-        body: JSON.stringify({ mensaje: texto }),
+        body: JSON.stringify({
+          mensaje: texto,
+          // Envía el historial de los últimos 10 mensajes para que Groq
+          // mantenga contexto entre preguntas del usuario
+          historial: mensajes.slice(-10).map(m => ({
+            rol: m.rol,
+            contenido: m.contenido,
+          })),
+        }),
         signal: controller.signal,
       })
       setMensajes((prev) => [...prev, { rol: 'assistant', contenido: data.respuesta }])
@@ -113,6 +127,10 @@ export default function ChatBot({ abierto, onClose }) {
           <span className="chatbot-header-title">
             <BsRobot size={20} /> CanchaBot
           </span>
+          {/* Botón para reiniciar la conversación y empezar desde cero */}
+          <button className="chatbot-reset" onClick={reiniciar} aria-label="Nueva conversación" title="Nueva conversación">
+            <MdRefresh size={18} />
+          </button>
           <button className="chatbot-close" onClick={() => onClose?.()} aria-label="Cerrar chat">
             <MdClose size={20} />
           </button>

@@ -1557,11 +1557,17 @@ def chatbot_view(request):
     if tool_resultados:
         messages = [
             {'role': 'system', 'content': system_prompt},
+            # Inserta el historial de la conversación para que Groq tenga contexto
+            # de preguntas y respuestas anteriores
+            *_armar_historial(request.data.get('historial', [])),
             {'role': 'user', 'content': f'Datos obtenidos del sistema:\n{tool_resultados}\n\nPregunta del usuario: {mensaje}'},
         ]
     else:
         messages = [
             {'role': 'system', 'content': system_prompt},
+            # Inserta el historial de la conversación para que Groq tenga contexto
+            # de preguntas y respuestas anteriores
+            *_armar_historial(request.data.get('historial', [])),
             {'role': 'user', 'content': mensaje},
         ]
 
@@ -1575,3 +1581,18 @@ def chatbot_view(request):
         return Response({'respuesta': response.choices[0].message.content})
     except Exception as e:
         return Response({'error': f'Error al comunicarse con Groq: {str(e)}'}, status=500)
+
+
+# Helper: convierte el historial del frontend al formato de mensajes de Groq
+# Recibe [{rol, contenido}] del frontend y devuelve [{role, content}]
+# Filtra solo los roles válidos (user/assistant), excluye mensajes de error
+# y limita a los últimos 10 mensajes para no exceder tokens
+def _armar_historial(historial):
+    if not historial or not isinstance(historial, list):
+        return []
+    mapeo = {'user': 'user', 'assistant': 'assistant'}
+    return [
+        {'role': mapeo.get(h.get('rol', ''), 'user'), 'content': h.get('contenido', '')}
+        for h in historial[-10:]
+        if h.get('rol') in ('user', 'assistant') and h.get('contenido')
+    ]
