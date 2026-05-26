@@ -23,8 +23,7 @@ import {
   MdFlashOn,
   MdBusiness,
   MdSportsVolleyball,
-  MdSportsTennis,
-  MdMenu
+  MdSportsTennis
 } from 'react-icons/md'
 
 const CLIENT_NAVIGATION_LINKS = [
@@ -200,21 +199,6 @@ export default function ClienteDashboard() {
             alignItems: 'center'
           }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', position: 'relative' }}>
-              <button 
-                className="mobile-hamburger-inline" 
-                onClick={() => window.dispatchEvent(new Event('toggleMobileMenu'))}
-                style={{ 
-                  display: 'none', 
-                  background: 'transparent', 
-                  border: 'none', 
-                  color: '#fff', 
-                  cursor: 'pointer',
-                  position: 'absolute',
-                  left: 0
-                }}
-              >
-                <MdMenu style={{ fontSize: '2.4rem' }} />
-              </button>
               <h2 style={{ 
                 fontSize: '1.4rem', 
                 fontWeight: 700, 

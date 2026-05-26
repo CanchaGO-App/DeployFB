@@ -1846,11 +1846,6 @@ select.form-input option {
     display: none !important;
   }
 
-  .mobile-hamburger-inline {
-    display: block !important;
-    position: absolute;
-    left: 0;
-  }
 
   .topbar-logo-img {
     height: 36px !important;
@@ -1913,15 +1908,18 @@ select.form-input option {
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
     justify-content: flex-start !important;
-    padding-bottom: 12px;
-    gap: 12px !important;
+    padding-bottom: 8px;
+    gap: 8px !important;
     -webkit-overflow-scrolling: touch;
   }
 
   .mobile-pill-container > div {
     white-space: nowrap;
     flex-shrink: 0;
-    border-radius: 50px !important;
+    padding: 8px 14px !important;
+    font-size: 0.82rem !important;
+    gap: 8px !important;
+    border-radius: var(--radius-md) !important;
   }
 
   .goalpad-main {
