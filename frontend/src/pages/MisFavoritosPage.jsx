@@ -110,7 +110,7 @@ export default function MisFavoritosPage() {
                   <div className="ccp-image-container" onClick={() => navigate(`/local/${fav.local}`)} style={{ cursor: 'pointer' }}>
                     {/* HARDCODED: getLocalImg({ id: fav.local }) ? ( */}
                     {fav.local_imagen ? (
-                      {/* HARDCODED: src={getLocalImg({ id: fav.local })} */}
+                      // HARDCODED: src={getLocalImg({ id: fav.local })}
                       <img src={fav.local_imagen} alt={fav.local_nombre} className="ccp-image" />
                     ) : (
                       <div className="ccp-image" style={{ background: 'var(--gradient-main)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '4rem' }}>🏟️</div>

@@ -340,7 +340,7 @@ export default function ClienteDashboard() {
                     <div className="ccp-image-container" onClick={() => navigate(`/local/${local.id}`)} style={{ cursor: 'pointer' }}>
                       {/* HARDCODED: getLocalImg(local) ? ( */}
                       {local.imagen_portada_url ? (
-                        {/* HARDCODED: src={getLocalImg(local)} */}
+                        // HARDCODED: src={getLocalImg(local)}
                         <img src={local.imagen_portada_url} alt={local.nombre} className="ccp-image" />
                       ) : (
                         <div className="ccp-image" style={{ background: 'var(--gradient-main)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '4rem', color: '#fff' }}><MdBusiness /></div>

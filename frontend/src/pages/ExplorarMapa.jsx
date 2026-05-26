@@ -122,7 +122,7 @@ export default function ExplorarMapa() {
       >
         {/* HARDCODED: getLocalImg(local) ? ( */}
         {local.imagen_portada_url ? (
-          {/* HARDCODED: src={getLocalImg(local)} */}
+          // HARDCODED: src={getLocalImg(local)}
           <img
             src={local.imagen_portada_url}
             alt={local.nombre}
