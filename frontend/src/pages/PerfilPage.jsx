@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { updatePerfil, eliminarCuenta } from '../api/auth'
 import Topbar from '../components/Topbar'
+import { AVATAR_DEFAULT } from '../utils/imagenes'
 import CustomAlertModal from '../components/CustomAlertModal'
 import Breadcrumb from '../components/ui/Breadcrumb'
 import Cropper from 'react-easy-crop'
@@ -21,7 +22,8 @@ export default function PerfilPage() {
 
   // Estados de foto de perfil
   const [fotoPerfilFile, setFotoPerfilFile] = useState(null)
-  const [fotoPerfilPreview, setFotoPerfilPreview] = useState(usuario?.foto_perfil_url || '')
+  const [fotoPerfilPreview, setFotoPerfilPreview] = useState(AVATAR_DEFAULT)  // HARDCODED
+  // ANTES: useState(usuario?.foto_perfil_url || '')
 
   // Estados del cropper
   const [crop, setCrop] = useState({ x: 0, y: 0 })

@@ -7,6 +7,7 @@ import Topbar from '../components/Topbar'
 import SearchBar from '../components/SearchBar'
 import Breadcrumb from '../components/ui/Breadcrumb'
 import { useAuth } from '../context/AuthContext'
+import { getLocalImg } from '../utils/imagenes'
 
 // Fix default Leaflet marker icon
 delete L.Icon.Default.prototype._getIconUrl
@@ -196,9 +197,11 @@ export default function ExplorarMapa() {
                     alignItems: 'center',
                   }}
                 >
-                  {local.imagen_portada_url ? (
+                  {getLocalImg(local) ? (
+                    // HARDCODED — ANTES: local.imagen_portada_url ? (
                     <img
-                      src={local.imagen_portada_url}
+                      src={getLocalImg(local)}  // HARDCODED
+                      // ANTES: src={local.imagen_portada_url}
                       alt={local.nombre}
                       style={{
                         width: 52, height: 52, objectFit: 'cover',

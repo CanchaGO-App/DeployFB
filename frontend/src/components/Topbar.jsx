@@ -5,6 +5,7 @@ import { getNotificaciones, marcarLeidas } from '../api/social'
 import logo from '../assets/logo.png'
 import { MdNotifications, MdPerson, MdLogout, MdMenu, MdClose } from 'react-icons/md'
 import { BsRobot } from 'react-icons/bs'
+import { AVATAR_DEFAULT } from '../utils/imagenes'
 import ChatBot from './ChatBot'
 
 export default function Topbar({ navigationLinks = [] }) {
@@ -181,10 +182,11 @@ export default function Topbar({ navigationLinks = [] }) {
         <div style={{ position: 'relative' }} ref={profileRef}>
           <div className="profile-info" onClick={() => setShowProfileMenu(!showProfileMenu)}>
             <div className="profile-avatar" style={{ overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 0 }}>
-              {usuario?.foto_perfil_url ? (
+              {true ? (
                 <>
                   <img
-                    src={usuario.foto_perfil_url}
+                    src={AVATAR_DEFAULT}  // HARDCODED
+                    // ANTES: src={usuario.foto_perfil_url}
                     alt={usuario.nombre}
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     onError={(e) => {
