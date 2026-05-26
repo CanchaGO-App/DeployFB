@@ -259,6 +259,9 @@ export default function ExplorarMapa() {
                   <h3>📍 Locales ({locales.length})</h3>
                   <button onClick={() => setDrawerAbierto(false)}>✕</button>
                 </div>
+                <div className="explorar-drawer-search">
+                  <SearchBar onSearch={handleSearch} />
+                </div>
                 <div className="explorar-drawer-body">
                   {listadoContent}
                 </div>
