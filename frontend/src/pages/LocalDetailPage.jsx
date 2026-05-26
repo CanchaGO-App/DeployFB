@@ -710,10 +710,10 @@ export default function LocalDetailPage() {
           <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginBottom: '16px' }}>
             Escanea el código QR y realiza el pago, luego sube el comprobante.
           </p>
-          {local.qr_code_url && (
+          {(getLocalQR(local) || local.qr_code_url) ? (
             <div style={{ textAlign: 'center', marginBottom: '16px' }}>
               <img
-                src={local.qr_code_url}
+                src={getLocalQR(local) || local.qr_code_url}
                 alt="QR de pago"
                 onClick={() => setQrZoom(true)}
                 style={{ width: 280, height: 280, objectFit: 'contain', borderRadius: 8, cursor: 'pointer' }}
@@ -721,6 +721,10 @@ export default function LocalDetailPage() {
               <div style={{ fontSize: '0.75rem', color: 'var(--text-muted)', marginTop: 4 }}>
                 Haz clic en el QR para ampliarlo
               </div>
+            </div>
+          ) : (
+            <div style={{ textAlign: 'center', padding: '40px 20px', color: 'var(--text-muted)' }}>
+              QR no disponible para este local
             </div>
           )}
           <div className="form-group">

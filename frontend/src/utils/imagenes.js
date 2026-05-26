@@ -39,6 +39,16 @@ export const CANCHA_IMAGENES_POR_TIPO = {
 
 export const AVATAR_DEFAULT = '/images/usergeneric1.webp'
 
+export const QR_DUENO_IMAGENES = {
+  6: '/images/qr_codes/qr_admin_id6.jpg',
+  26: '/images/qr_codes/qr_jose_id26.jpeg',
+}
+
+export function getLocalQR(local) {
+  if (!local) return null
+  return QR_DUENO_IMAGENES[local.dueno] || null
+}
+
 export function getLocalImg(local) {
   if (!local) return null
   return LOCAL_IMAGENES[local.id] || null
