@@ -11,6 +11,25 @@ export const LOCAL_IMAGENES = {
   2:  '/images/locales/unnamed_MfQD05Z.webp',
 }
 
+export const CANCHA_IMAGENES = {
+  28: '/images/canchas/Padel_Sur_C1.webp',
+  27: '/images/canchas/Padel_Sur_C1.webp',
+  25: '/images/canchas/Padel_Sur_C1.webp',
+  24: '/images/canchas/C1_sc_padel.webp',
+  23: '/images/canchas/C1_sc_padel.webp',
+  22: '/images/canchas/Cancha_1_padel_house.webp',
+  21: '/images/canchas/Cancha_1_padel_house_4bgDVUU.webp',
+  20: '/images/canchas/Cancha_1_padel_house_MQaZTm5.webp',
+  12: '/images/canchas/SEA_1_y_2.jpg',
+  11: '/images/canchas/SEA_1.jpg',
+  9:  '/images/canchas/Cancha_1_y_2.jpg',
+  8:  '/images/canchas/golazo_c3.jpg',
+  7:  '/images/canchas/Golazo_c2.jpg',
+  6:  '/images/canchas/Golazo_c1.jpg',
+  4:  '/images/canchas/La_bombonera.jpg',
+  3:  '/images/canchas/cancha_1_9BertEr.webp',
+}
+
 export const CANCHA_IMAGENES_POR_TIPO = {
   futbol5: '/images/futbolicon.png',
   futbol7: '/images/futbolicon.png',
@@ -27,5 +46,6 @@ export function getLocalImg(local) {
 
 export function getCanchaImg(cancha) {
   if (!cancha) return null
-  return CANCHA_IMAGENES_POR_TIPO[cancha.tipo] || null
+  // API (fallback): vendría de cancha.imagen_url
+  return CANCHA_IMAGENES[cancha.id] || CANCHA_IMAGENES_POR_TIPO[cancha.tipo] || null
 }

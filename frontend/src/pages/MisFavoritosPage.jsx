@@ -108,9 +108,9 @@ export default function MisFavoritosPage() {
               {favoritos.map((fav) => (
                 <div key={fav.id} className="cancha-card-premium fade-in">
                   <div className="ccp-image-container" onClick={() => navigate(`/local/${fav.local}`)} style={{ cursor: 'pointer' }}>
-                    {getLocalImg(fav) ? (
+                    {getLocalImg({ id: fav.local }) ? (
                       // API (fallback): fav.local_imagen ? (
-                      <img src={getLocalImg(fav)} alt={fav.local_nombre} className="ccp-image" />
+                      <img src={getLocalImg({ id: fav.local })} alt={fav.local_nombre} className="ccp-image" />
                       // API (fallback): src={fav.local_imagen}
                     ) : (
                       <div className="ccp-image" style={{ background: 'var(--gradient-main)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '4rem' }}>🏟️</div>
