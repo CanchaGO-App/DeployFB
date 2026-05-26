@@ -5,7 +5,7 @@ import { getLocal, getDisponibilidadLocal } from '../api/locales'
 import { getReservas, actualizarEstadoReserva } from '../api/reservas'
 import { reservarYPagar } from '../api/pagos'
 import Topbar from '../components/Topbar'
-import { getLocalImg, getCanchaImg } from '../utils/imagenes'
+// import { getLocalImg, getCanchaImg } from '../utils/imagenes'
 import ResenasModal from '../components/ResenasModal'
 import CustomAlertModal from '../components/CustomAlertModal'
 import ModalWrapper from '../components/ui/ModalWrapper'
@@ -330,10 +330,10 @@ export default function LocalDetailPage() {
           {/* Hero del Local */}
           <div style={{ display: 'flex', gap: '32px', marginBottom: '48px', flexWrap: 'wrap', alignItems: 'flex-start' }}>
             <div style={{ position: 'relative', width: '350px', height: '250px', borderRadius: 'var(--radius-lg)', overflow: 'hidden', flexShrink: 0, boxShadow: 'var(--shadow-card)' }}>
-              {getLocalImg(local) ? (
-                // API (fallback): local.imagen_portada_url ? (
-                <img src={getLocalImg(local)} alt={local.nombre} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                // API (fallback): src={local.imagen_portada_url}
+              {/* HARDCODED: getLocalImg(local) ? ( */}
+              {local.imagen_portada_url ? (
+                {/* HARDCODED: src={getLocalImg(local)} */}
+                <img src={local.imagen_portada_url} alt={local.nombre} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               ) : (
                 <div style={{ width: '100%', height: '100%', background: 'var(--gradient-card)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '5rem', color: '#fff' }}>
                   <MdBusiness />
@@ -385,10 +385,10 @@ export default function LocalDetailPage() {
                       borderRadius: 'var(--radius-lg)', padding: '16px', display: 'flex', flexDirection: 'column',
                       transition: 'all 0.3s ease'
                     }}>
-                      {getCanchaImg(cancha) ? (
-                        // API (fallback): cancha.imagen_url ? (
-                        <img src={getCanchaImg(cancha)} alt={cancha.nombre} style={{ width: '100%', height: '160px', objectFit: 'cover', borderRadius: 'var(--radius-md)', marginBottom: '16px' }} />
-                        // API (fallback): src={cancha.imagen_url}
+                      {/* HARDCODED: getCanchaImg(cancha) ? ( */}
+                      {cancha.imagen_url ? (
+                        {/* HARDCODED: src={getCanchaImg(cancha)} */}
+                        <img src={cancha.imagen_url} alt={cancha.nombre} style={{ width: '100%', height: '160px', objectFit: 'cover', borderRadius: 'var(--radius-md)', marginBottom: '16px' }} />
                       ) : (
                         <div style={{ width: '100%', height: '160px', background: 'rgba(255,255,255,0.05)', borderRadius: 'var(--radius-md)', marginBottom: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3rem', color: '#fff' }}>
                           <MdSportsSoccer />

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { getFavoritos, toggleFavorito } from '../api/favoritos'
 import Topbar from '../components/Topbar'
-import { getLocalImg } from '../utils/imagenes'
+// import { getLocalImg } from '../utils/imagenes'
 import Breadcrumb from '../components/ui/Breadcrumb'
 
 const CLIENT_NAVIGATION_LINKS = [
@@ -108,10 +108,10 @@ export default function MisFavoritosPage() {
               {favoritos.map((fav) => (
                 <div key={fav.id} className="cancha-card-premium fade-in">
                   <div className="ccp-image-container" onClick={() => navigate(`/local/${fav.local}`)} style={{ cursor: 'pointer' }}>
-                    {getLocalImg({ id: fav.local }) ? (
-                      // API (fallback): fav.local_imagen ? (
-                      <img src={getLocalImg({ id: fav.local })} alt={fav.local_nombre} className="ccp-image" />
-                      // API (fallback): src={fav.local_imagen}
+                    {/* HARDCODED: getLocalImg({ id: fav.local }) ? ( */}
+                    {fav.local_imagen ? (
+                      {/* HARDCODED: src={getLocalImg({ id: fav.local })} */}
+                      <img src={fav.local_imagen} alt={fav.local_nombre} className="ccp-image" />
                     ) : (
                       <div className="ccp-image" style={{ background: 'var(--gradient-main)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '4rem' }}>🏟️</div>
                     )}
