@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'corsheaders',
-    'storages',
+    # 'storages',  # Supabase Storage (inactivo)
     'usuarios',
 ]
 
@@ -156,18 +156,18 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# ─── Supabase Storage (S3-compatible) ───────────────────────────────
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-AWS_ACCESS_KEY_ID = os.getenv('SUPABASE_ACCESS_KEY')
-AWS_SECRET_ACCESS_KEY = os.getenv('SUPABASE_SECRET_KEY')
-AWS_STORAGE_BUCKET_NAME = os.getenv('SUPABASE_BUCKET')
-AWS_S3_ENDPOINT_URL = os.getenv('SUPABASE_ENDPOINT')
-AWS_S3_REGION_NAME = os.getenv('SUPABASE_REGION', 'us-west-1')
-AWS_S3_FILE_OVERWRITE = False
-AWS_QUERYSTRING_AUTH = False
-AWS_DEFAULT_ACL = 'public-read'
-# ────────────────────────────────────────────────────────────────────
+# # ─── Supabase Storage (S3-compatible) ──────────────────────────────
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#
+# AWS_ACCESS_KEY_ID = os.getenv('SUPABASE_ACCESS_KEY')
+# AWS_SECRET_ACCESS_KEY = os.getenv('SUPABASE_SECRET_KEY')
+# AWS_STORAGE_BUCKET_NAME = os.getenv('SUPABASE_BUCKET')
+# AWS_S3_ENDPOINT_URL = os.getenv('SUPABASE_ENDPOINT')
+# AWS_S3_REGION_NAME = os.getenv('SUPABASE_REGION', 'us-west-1')
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_QUERYSTRING_AUTH = False
+# AWS_DEFAULT_ACL = 'public-read'
+# # ────────────────────────────────────────────────────────────────────
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
