@@ -23,7 +23,7 @@ import { getPagosPendientes, confirmarPago, rechazarPago } from '../api/pagos'
 import Topbar from '../components/Topbar'
 import StatCard from '../components/StatCard'
 import CustomAlertModal from '../components/CustomAlertModal'
-import { getLocalImg, getCanchaImg } from '../utils/imagenes'
+// import { getLocalImg, getCanchaImg } from '../utils/imagenes'  // HARDCODED (fallback)
 import ModalWrapper from '../components/ui/ModalWrapper'
 import { 
   MdBarChart, 
@@ -614,10 +614,10 @@ export default function DuenoDashboard() {
                         return (
                           <div key={local.id} className="cancha-card-premium fade-in">
                             <div className="ccp-image-container" onClick={() => navigate(`/local/${local.id}`)} style={{ cursor: 'pointer' }}>
-                              {getLocalImg(local) ? (
-                                // HARDCODED — ANTES: local.imagen_portada_url ? (
-                                <img src={getLocalImg(local)} alt={local.nombre} className="ccp-image" />  // HARDCODED
-                                // ANTES: src={local.imagen_portada_url}
+                              {local.imagen_portada_url ? (
+                                // HARDCODED (fallback): getLocalImg(local) ? (
+                                <img src={local.imagen_portada_url} alt={local.nombre} className="ccp-image" />
+                                // HARDCODED (fallback): src={getLocalImg(local)}
                               ) : (
                                 <div className="ccp-image" style={{ background: 'var(--gradient-main)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '4rem' }}>🏟️</div>
                               )}
@@ -811,10 +811,10 @@ export default function DuenoDashboard() {
                     gap: 12,
                     alignItems: 'center',
                   }}>
-                    {getLocalImg(l) && (
-                      // HARDCODED — ANTES: l.imagen_portada_url && (
-                      <img src={getLocalImg(l)} alt={l.nombre}  // HARDCODED
-                        // ANTES: src={l.imagen_portada_url}
+                    {l.imagen_portada_url && (
+                      // HARDCODED (fallback): getLocalImg(l) && (
+                      <img src={l.imagen_portada_url} alt={l.nombre}
+                        // HARDCODED (fallback): src={getLocalImg(l)}
                         style={{ width: 56, height: 56, objectFit: 'cover', borderRadius: 8, flexShrink: 0 }} />
                     )}
                     <div style={{ flex: 1 }}>
@@ -986,10 +986,10 @@ export default function DuenoDashboard() {
                         gap: 12,
                         alignItems: 'center',
                       }}>
-                        {getCanchaImg(c) && (
-                          // HARDCODED — ANTES: c.imagen_url && (
-                          <img src={getCanchaImg(c)} alt={c.nombre}  // HARDCODED
-                            // ANTES: src={c.imagen_url}
+                        {c.imagen_url && (
+                          // HARDCODED (fallback): getCanchaImg(c) && (
+                          <img src={c.imagen_url} alt={c.nombre}
+                            // HARDCODED (fallback): src={getCanchaImg(c)}
                             style={{ width: 56, height: 56, objectFit: 'cover', borderRadius: 8, flexShrink: 0 }} />
                         )}
                         <div style={{ flex: 1 }}>
