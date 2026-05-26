@@ -23,7 +23,7 @@ import { getPagosPendientes, confirmarPago, rechazarPago } from '../api/pagos'
 import Topbar from '../components/Topbar'
 import StatCard from '../components/StatCard'
 import CustomAlertModal from '../components/CustomAlertModal'
-import { getLocalImg, getCanchaImg } from '../utils/imagenes'
+// import { getLocalImg, getCanchaImg } from '../utils/imagenes'
 import ModalWrapper from '../components/ui/ModalWrapper'
 import { 
   MdBarChart, 
@@ -52,11 +52,9 @@ import {
 const PIE_COLORS = ['var(--accent-green)', '#f97316']
 
 const DUENO_NAVIGATION_LINKS = [
-  { label: 'Resumen', path: '/dashboard/dueno?section=resumen' },
-  { label: 'Mis Locales', path: '/dashboard/dueno?section=locales' },
-  { label: 'Canchas', path: '/dashboard/dueno?section=canchas' },
-  { label: 'Reservas', path: '/dashboard/dueno?section=reservas' },
-  { label: 'Pagos', path: '/dashboard/dueno?section=pagos' },
+  { label: 'Panel de Gestión', path: '/dashboard/dueno' },
+  { label: 'Explorar Mapa', path: '/explorar' },
+  { label: 'Mi Perfil', path: '/perfil' },
 ]
 
 const DUENO_SECTIONS = new Set(['resumen', 'locales', 'canchas', 'reservas', 'pagos'])
@@ -614,10 +612,10 @@ export default function DuenoDashboard() {
                         return (
                           <div key={local.id} className="cancha-card-premium fade-in">
                             <div className="ccp-image-container" onClick={() => navigate(`/local/${local.id}`)} style={{ cursor: 'pointer' }}>
-                              {getLocalImg(local) ? (
-                                // API (fallback): local.imagen_portada_url ? (
-                                <img src={getLocalImg(local)} alt={local.nombre} className="ccp-image" />
-                                // API (fallback): src={local.imagen_portada_url}
+                              {/* HARDCODED: getLocalImg(local) ? ( */}
+                              {local.imagen_portada_url ? (
+                                {/* HARDCODED: src={getLocalImg(local)} */}
+                                <img src={local.imagen_portada_url} alt={local.nombre} className="ccp-image" />
                               ) : (
                                 <div className="ccp-image" style={{ background: 'var(--gradient-main)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '4rem' }}>🏟️</div>
                               )}
@@ -811,10 +809,10 @@ export default function DuenoDashboard() {
                     gap: 12,
                     alignItems: 'center',
                   }}>
-                    {getLocalImg(l) && (
-                      // API (fallback): l.imagen_portada_url && (
-                      <img src={getLocalImg(l)} alt={l.nombre}
-                        // API (fallback): src={l.imagen_portada_url}
+                    {/* HARDCODED: getLocalImg(l) && ( */}
+                    {l.imagen_portada_url && (
+                      {/* HARDCODED: src={getLocalImg(l)} */}
+                      <img src={l.imagen_portada_url} alt={l.nombre}
                         style={{ width: 56, height: 56, objectFit: 'cover', borderRadius: 8, flexShrink: 0 }} />
                     )}
                     <div style={{ flex: 1 }}>
@@ -986,10 +984,10 @@ export default function DuenoDashboard() {
                         gap: 12,
                         alignItems: 'center',
                       }}>
-                        {getCanchaImg(c) && (
-                          // API (fallback): c.imagen_url && (
-                          <img src={getCanchaImg(c)} alt={c.nombre}
-                            // API (fallback): src={c.imagen_url}
+                        {/* HARDCODED: getCanchaImg(c) && ( */}
+                        {c.imagen_url && (
+                          {/* HARDCODED: src={getCanchaImg(c)} */}
+                          <img src={c.imagen_url} alt={c.nombre}
                             style={{ width: 56, height: 56, objectFit: 'cover', borderRadius: 8, flexShrink: 0 }} />
                         )}
                         <div style={{ flex: 1 }}>
