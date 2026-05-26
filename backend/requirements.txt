@@ -25,4 +25,6 @@ typing-inspection==0.4.2
 typing_extensions==4.15.0
 tzdata==2026.2
 python-dotenv==1.1.0
+django-storages==1.14.5
+boto3==1.38.0
 whitenoise==6.9.0
