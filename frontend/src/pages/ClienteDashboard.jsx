@@ -5,7 +5,7 @@ import { getLocales } from '../api/locales'
 import { getReservas } from '../api/reservas'
 import { getFavoritos, toggleFavorito, esFavorito } from '../api/favoritos'
 import Topbar from '../components/Topbar'
-// import { getLocalImg } from '../utils/imagenes'
+import { getLocalImg } from '../utils/imagenes'
 import {
   MdOutlineEmojiEvents,
   MdApps,
@@ -338,10 +338,10 @@ export default function ClienteDashboard() {
                 return (
                   <div key={local.id} className="cancha-card-premium fade-in">
                     <div className="ccp-image-container" onClick={() => navigate(`/local/${local.id}`)} style={{ cursor: 'pointer' }}>
-                      {/* HARDCODED: getLocalImg(local) ? ( */}
-                      {local.imagen_portada_url ? (
-                        // HARDCODED: src={getLocalImg(local)}
-                        <img src={local.imagen_portada_url} alt={local.nombre} className="ccp-image" />
+                      {getLocalImg(local) ? (
+                        // API (fallback): local.imagen_portada_url ? (
+                        <img src={getLocalImg(local)} alt={local.nombre} className="ccp-image" />
+                        // API (fallback): src={local.imagen_portada_url}
                       ) : (
                         <div className="ccp-image" style={{ background: 'var(--gradient-main)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '4rem', color: '#fff' }}><MdBusiness /></div>
                       )}
