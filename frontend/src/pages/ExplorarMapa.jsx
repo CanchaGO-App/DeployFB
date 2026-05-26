@@ -53,7 +53,8 @@ export default function ExplorarMapa() {
   const [cargando, setCargando] = useState(true)
   const [centro, setCentro] = useState([-17.7833, -63.1821])
   const [localSeleccionado, setLocalSeleccionado] = useState(null)
-  const [drawerAbierto, setDrawerAbierto] = useState(false)
+  const [sheetAbierto, setSheetAbierto] = useState(false)
+  const touchStartY = useRef(0)
 
   useEffect(() => {
     cargarLocales()
@@ -236,9 +237,6 @@ export default function ExplorarMapa() {
                 ))}
               </MapContainer>
             </div>
-            <button className="explorar-fab" onClick={() => setDrawerAbierto(true)}>
-              📋 <span>Lista</span>
-            </button>
           </div>
 
           {/* Panel lateral: listado de locales (desktop) */}
@@ -251,23 +249,29 @@ export default function ExplorarMapa() {
             </div>
           </div>
 
-          {/* Drawer mobile */}
-          {drawerAbierto && (
-            <div className="explorar-drawer-overlay" onClick={() => setDrawerAbierto(false)}>
-              <aside className="explorar-drawer" onClick={(e) => e.stopPropagation()}>
-                <div className="explorar-drawer-header">
-                  <h3>📍 Locales ({locales.length})</h3>
-                  <button onClick={() => setDrawerAbierto(false)}>✕</button>
-                </div>
-                <div className="explorar-drawer-search">
-                  <SearchBar onSearch={handleSearch} />
-                </div>
-                <div className="explorar-drawer-body">
-                  {listadoContent}
-                </div>
-              </aside>
+          {/* Bottom sheet mobile */}
+          <div className={'explorar-drawer-overlay' + (sheetAbierto ? '' : ' hidden')} onClick={() => setSheetAbierto(false)} />
+          <aside className={'explorar-drawer' + (sheetAbierto ? ' expanded' : '')}>
+            <div className="explorar-drawer-handle" />
+            <div className="explorar-drawer-header" onClick={() => setSheetAbierto(!sheetAbierto)}
+              onTouchStart={(e) => { touchStartY.current = e.touches[0].clientY }}
+              onTouchEnd={(e) => {
+                const deltaY = e.changedTouches[0].clientY - touchStartY.current
+                if (Math.abs(deltaY) > 50) {
+                  if (deltaY > 0) setSheetAbierto(false)
+                  else setSheetAbierto(true)
+                }
+              }}>
+              <h3>📍 Locales ({locales.length})</h3>
+              <button onClick={(e) => { e.stopPropagation(); setSheetAbierto(false) }}>✕</button>
             </div>
-          )}
+            <div className="explorar-drawer-search">
+              <SearchBar onSearch={handleSearch} />
+            </div>
+            <div className="explorar-drawer-body">
+              {listadoContent}
+            </div>
+          </aside>
         </div>
       </div>
     </>
